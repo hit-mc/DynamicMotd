@@ -1,12 +1,12 @@
 # Dynamic MOTD *(Message of Today)*
 
-Dynamic generated MOTD.
+Generate MOTD dynamically with some useful variables and *Liquid* language.
 
 # Usage
 
 ## Syntax
 
-Please refer to [Liquid](https://shopify.github.io/liquid/) for more information.
+Please refer to [Liquid documentation](https://shopify.github.io/liquid/).
 
 ## Variables
 
