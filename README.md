@@ -1,9 +1,13 @@
-# Fabric Example Mod
+# Dynamic MOTD *(Message of Today)*
 
-## Setup
+Dynamic generated MOTD.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+# Variables
 
-## License
+There are a handful of predefined variables:
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+| name | example | description |
+| ------------- | ------- | ----------- |
+| world.time | 12345678 | Game ticks the `overworld` world has lived. |
+| world.minecraft_days | 123 | Minecraft days the `overworld` has lived. |
+| players | {"trueKeuin", "Alice", "Steve"} | Name list of online players. |
