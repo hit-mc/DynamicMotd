@@ -30,6 +30,14 @@ dependencies {
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 	implementation 'nl.big-o:liqp:0.7.9'
+	include 'nl.big-o:liqp:0.7.9'
+	include 'com.fasterxml.jackson.core:jackson-annotations:2.10.0'
+	include 'com.fasterxml.jackson.core:jackson-core:2.10.0'
+	include 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
+	include 'com.fasterxml.jackson.core:jackson-annotations:2.10.0'
+	include 'com.fasterxml.jackson.core:jackson-core:2.10.0'
+	include 'org.antlr:antlr4-runtime:4.7.2'
+	include 'org.jsoup:jsoup:1.11.3'
 }
 
 processResources {

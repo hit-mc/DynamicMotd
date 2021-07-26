@@ -1,13 +1,15 @@
 package com.keuin.dynamicmotd;
 
 import com.keuin.dynamicmotd.event.OnPlayerJoinedEvent;
+import com.keuin.dynamicmotd.util.Exceptions;
 import liqp.ProtectionSettings;
 import liqp.Template;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.LiteralText;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,8 +45,9 @@ public class MotdSender implements OnPlayerJoinedEvent.OnPlayerJoinedEventCallba
         } catch (FileNotFoundException e) {
             logger.severe(String.format("Template file `%s` does not exist!", fileName));
         } catch (IOException e) {
-            logger.severe("Cannot read template: " + e.getMessage());
-            e.printStackTrace();
+            logger.severe("Cannot read template: " + e + e.getMessage() + Exceptions.getStackTrace(e));
+        } catch (RuntimeException e) {
+            logger.severe("Uncaught exception: " + e + e.getMessage() + Exceptions.getStackTrace(e));
         }
     }
 
@@ -74,10 +77,9 @@ public class MotdSender implements OnPlayerJoinedEvent.OnPlayerJoinedEventCallba
                     .parse(this.path.toFile())
                     .withProtectionSettings(
                             new ProtectionSettings.Builder()
-                                    .withMaxSizeRenderedString(1000)
-                                    .withMaxIterations(100)
-                                    .withMaxRenderTimeMillis(500L)
-                                    .withMaxTemplateSizeBytes(1000)
+                                    .withMaxSizeRenderedString(10000)
+                                    .withMaxRenderTimeMillis(1000L)
+                                    .withMaxTemplateSizeBytes(10000)
                                     .build());
         }
     }

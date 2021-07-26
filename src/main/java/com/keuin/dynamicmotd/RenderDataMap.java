@@ -1,5 +1,6 @@
 package com.keuin.dynamicmotd;
 
+import com.keuin.dynamicmotd.data.SystemData;
 import com.keuin.dynamicmotd.data.WorldData;
 import net.minecraft.server.MinecraftServer;
 import org.jetbrains.annotations.NotNull;
@@ -12,16 +13,18 @@ public class RenderDataMap implements Map<String, Object> {
 
     private final Supplier<WorldData> lazyWorld;
     private final Supplier<List<String>> lazyPlayers;
-    private final Set<String> keySet = new HashSet<>(Arrays.asList("world", "players"));
+    private final Supplier<SystemData> lazySystem;
+    private final Set<String> keySet = new HashSet<>(Arrays.asList("world", "players", "system"));
 
     public RenderDataMap(@NotNull MinecraftServer server) {
         this.lazyWorld = () -> new WorldData(server.getOverworld());
         this.lazyPlayers = () -> Arrays.asList(server.getPlayerNames());
+        this.lazySystem = SystemData::new;
     }
 
     @Override
     public int size() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -50,6 +53,9 @@ public class RenderDataMap implements Map<String, Object> {
         }
         if (key.equals("players")) {
             return lazyPlayers.get();
+        }
+        if (key.equals("system")) {
+            return lazySystem.get();
         }
         return null;
     }

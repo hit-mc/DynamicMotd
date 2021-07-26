@@ -16,6 +16,7 @@ There are a handful of predefined variables:
 | ------------- | ------- | ----------- |
 | world.time | 12345678 | Game ticks the `overworld` world has lived. |
 | world.minecraft_days | 123 | Minecraft days the `overworld` has lived. |
+| system.unixsecs | 1627144101 | Unix timestamp in seconds. |
 | players | {"trueKeuin", "Alice", "Steve"} | Name list of online players. |
 
 ## Hint
